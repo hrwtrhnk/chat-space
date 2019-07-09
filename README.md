@@ -22,3 +22,48 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## membersテーブル(groupsとusersの中間)
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :group
+- belongs_to :user
+
+
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|varcher|null: false|
+|e-mail|varcher|null: false, unique:true|
+|password|varcher|null: false|
+
+### Association
+- has_many :groups, through: :members
+- has_many :messages
+
+
+## groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|varcher|null: false|
+
+### Association
+- has_many :users, through: :members
+- has_many :messages
+
+## messagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|body|text|default:''
+|image|string|default''
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :group
