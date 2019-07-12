@@ -1,1 +1,47 @@
-MZM is the best!
+<!DOCCTYPE HTML>
+
+%head
+  %link{"data-turbolinks-track" => "reload", :href => "/assets/application-20597f7122b97f433c4487edf7d6a0cfc9e951e2a661b8b0c7320b95bbd38ccd.css", :media => "all", :rel => "stylesheet"}/
+  %script{:src => "/assets/application-92a91cf5753a538c5407a46c726acab43576fb46358ffa8a7ee0ee0719aa2f51.js", "data-turbolinks-track" => "reload"}
+  %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %title "ChatSpaceSample"
+  %meta{:content => "authenticity_token", :name => "csrf-param"}
+  %meta{:content => "UGlZ9IoEcZDOzEaSvJFlGCJcbEhBfvojyLXrxhlmqyvnfU3l5FJ9UgtEEtoD8DkiyP3LjJha4SXK7X7RbKbzHQ==", :name => "csrf-token"}
+
+%body
+  .flash-box
+  .wrapper
+    .chat-side
+      .side-header
+        .side-header__box
+          %p.side-header__box__user-name MZM
+          %ul.side-header__box__menu
+            %li.side-header__box__menu__new-group
+              %a{:href => "/groups/new"}
+                %i.fa.fa-edit
+            %li.side-header__box__menu__edit-user
+              %a{:href => "/users/1066/edit"}
+                %i.fa.fa-cog
+      .groups
+        %a:{:href => "/groups/2228/messages"}
+          .group
+            %p.group__group-name BALUS
+            %p.group__grouplatest-message ライブで世界を変えます。
+    .chat-main
+      .main-header
+        .main-header__left-box
+          %h2.main-header__left-box__current-group{"data-group_id" => "2228"} BALUS
+          %ul.main-header__left-box__member-list
+            %li.main-header__left-box__member-list__member アンジョー、コーサカ、銀河アリス、夜子ﾊﾞｰﾊﾞﾝｸ、風宮まつり
+        %a{:href => "/groups/2228/edit"}
+          .main-headter__edit-btn EDIT
+      .messages
+        .message コーサカです。アンジョーです。二人合わせてMonsterZ MATEです。
+        .message ごきげんようです！銀河アリスでーす！
+        .message 紳士淑女の皆々様、夜子・バーバンクです。
+        .message 風宮まつり〜ｶｯｶｯ!
+        .message ライブで世界を変えます。
+      .form
+        %form#new-message.new-message{:action => "/groups/2228/messages", :enctype => "multipart/form-data", "accept-charset" => "UTF-8", :method => "post"}
+
+
