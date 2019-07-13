@@ -32,16 +32,54 @@
         .main-header__left-box
           %h2.main-header__left-box__current-group{"data-group_id" => "2228"} BALUS
           %ul.main-header__left-box__member-list
-            %li.main-header__left-box__member-list__member アンジョー、コーサカ、銀河アリス、夜子ﾊﾞｰﾊﾞﾝｸ、風宮まつり
+            %li.main-header__left-box__member-list__member MEMBER: アンジョー、コーサカ、銀河アリス、夜子ﾊﾞｰﾊﾞﾝｸ、風宮まつり
         %a{:href => "/groups/2228/edit"}
-          .main-headter__edit-btn EDIT
+          .main-header__edit-btn EDIT
       .messages
-        .message コーサカです。アンジョーです。二人合わせてMonsterZ MATEです。
-        .message ごきげんようです！銀河アリスでーす！
-        .message 紳士淑女の皆々様、夜子・バーバンクです。
-        .message 風宮まつり〜ｶｯｶｯ!
-        .message ライブで世界を変えます。
+        .message
+          .message__upper-info 
+            %p.message__upper-info__talker MZM
+            %p.message__upper-info__date 2019/07/12(Fri) 00:55:00
+          %p.message__text コーサカです。アンジョーです。二人合わせてMonsterZ MATEです。
+        .message
+          .message__upper-info 
+            %p.message__upper-info__talker 夜子・バーバンク
+            %p.message__upper-info__date 2019/07/12(Fri) 00:56:00
+          %p.message__text 紳士淑女の皆々様、夜子・バーバンクです。
+        .message
+          .message__upper-info 
+            %p.message__upper-info__talker 銀河アリス
+            %p.message__upper-info__date 2019/07/12(Fri) 00:57:00
+          %p.message__text ごきげんようです！銀河アリスでーす！
+        .message
+          .message__upper-info 
+            %p.message__upper-info__talker 風宮まつり
+            %p.message__upper-info__date 2019/07/12(Fri) 00:58:00
+          %p.message__text 風宮まつり〜ｶｯｶｯ!
+        .message
+          .message__upper-info 
+            %p.message__upper-info__talker BALUS
+            %p.message__upper-info__date 2019/07/12(Fri) 00:59:00
+          %p.message__text ライブで世界を変えます。１
+        .message
+          .message__upper-info 
+            %p.message__upper-info__talker BALUS
+            %p.message__upper-info__date 2019/07/12(Fri) 00:59:00
+          %p.message__text ライブで世界を変えます。２
+        .message
+          .message__upper-info 
+            %p.message__upper-info__talker BALUS
+            %p.message__upper-info__date 2019/07/12(Fri) 00:59:00
+          %p.message__text ライブで世界を変えます。３
       .form
         %form#new-message.new-message{:action => "/groups/2228/messages", :enctype => "multipart/form-data", "accept-charset" => "UTF-8", :method => "post"}
+          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+          %input{:name => "authenticity_token", :type => "hidden", :value => "yIXLGCWYPZbQ4bgHW8AL4SpnQ0ZEXLwhkAiSc2wiVWQLRH5zps8PEFV3TdIi9VuW4rGWvppMCmX6vvW80VXByw=="}/
+          .input-box
+            %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
+            %label.input-box__image{:for => "message_image"}
+              %i.fa.fa-image
+                %input#message_image.input-box__image__file{:name => "message[image]", :type => "file"}/
+          %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
 
 
