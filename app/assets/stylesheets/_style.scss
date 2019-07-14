@@ -24,207 +24,189 @@ input{
 .wrapper {
   margin: 0;
   padding: 0;
+}
 
-  //左側
-  .chat-side {
-    width: 300px;
-    color: white;
-    float: left;
+//左側
+.chat-side {
+  width: 300px;
+  color: white;
+  float: left;
+}
 
-    //左上
-    .side-header {
-      background-color: #253141;
-      height: 100px;
+//左上
+.side-header {
+  background-color: #253141;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
+    &__menu {
       display: flex;
-      align-items: center;
-      padding: 0 20px;
-
-      &__box {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        font-weight: bold;
-
-        ul.side-header__box__menu {
-          display: flex;
-
-          li.side-header__box__menu__new-group {
-            margin-left: 0.3rem;
-
-            i.fa.fa-edit {
-              display: inline-block;
-              font: normal normal normal 14px/1 FontAwesome;
-              font-size: inherit;
-              text-rendering: auto;
-              -webkit-font-smoothing: antialiased;
-            }
-          }
-
-          li.side-header__box__menu__edit-user {
-            margin-left: 0.3rem;
-
-            i.fa.fa-cog {
-              display: inline-block;
-              font: normal normal normal 14px/1 FontAwesome;
-              font-size: inherit;
-              text-rendering: auto;
-              -webkit-font-smoothing: antialiased;
-            }
-          }
-        }
+      &__new-group {
+        margin-left: 0.3rem;
       }
-    }
-
-    //左下縦長
-    .groups {
-      height: calc(100vh - 100px);
-      background-color: #2f3e51;
-      padding: 20px 20px 0;
-      overflow: scroll;
-
-      .group {
-        margin-bottom: 40px;
-
-        p.group__group-name {
-          font-size: 15px;
-          margin-bottom: 5px;
-        }
-        p.group__grouplatest-message {
-          font-size: 11px;
-          //.group以下cssが全く反映されない→aタグを別でまとめたら解決。何故？
-          //この後も出てくるpの意味って何？　まとめるにしても同じCSS使ってなくない？
-        }
+      &__edit-user {
+        margin-left: 0.3rem;
       }
     }
   }
+}
+
+i.fa.fa-edit {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+i.fa.fa-cog {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+//左下縦長
+.groups {
+  height: calc(100vh - 100px);
+  background-color: #2f3e51;
+  padding: 20px 20px 0;
+  overflow: scroll;
+}
+
+.group {
+  margin-bottom: 40px;
+  &__group-name {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+  &__grouplatest-message {
+    font-size: 11px;
+  }
+}
 
 //右側
-  .chat-main {
-    width: calc(100vw - 300px);
-    float: left;
+.chat-main {
+  width: calc(100vw - 300px);
+  float: left;
+}
 
-    .main-header {
-      height: 100px;
-      padding: 0 40px;
+.main-header {
+  height: 100px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px #eee;
+  overflow: scroll;
+  &__left-box {
+    margin-top: 35px;
+    &__current-group {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    &__member-list {
       display: flex;
-      justify-content: space-between;
-      border-bottom: solid 1px #eee;
-      overflow: scroll;
-
-      &__left-box {
-        margin-top: 35px;
-
-        h2.main-header__left-box__current-group {
-          font-size: 20px;
-          color: #333;
-          margin-bottom: 15px;
-        }
-        ul.main-header__left-box__member-list {
-          display: flex;
-          font-size: 12px;
-          color: #999999;
-        }
-      }
-
-      a .main-header__edit-btn {
-        height: 40px;
-        line-height: 40px;
-        padding: 0 20px;
-        margin-top: 30px;
-        border: solid 1px #38aef0;
-        color: #38aef0;
-        position: absolute;
-        right: 40px;
-      //なんでここはスペース必要なのに他のとこでスペース開けるとダメなの？
-      //この場合aタグ消しても作用するけどなんで？
-      //aタグはなんか違うやつ？表記違うし。。。
-      }
-    }
-
-    .messages {
-      height: calc(100vh - 190px);
-      padding: 46px 40px;
-      background-color: #fafafa;
-      overflow: scroll;
-
-      .message {
-        padding-bottom: 40px;
-
-        &__upper-info {
-          display: flex;
-          margin-bottom: 10px;
-
-          &__talker {
-            color: #434a54;
-            font-size: 16px;
-            font-weight: bold;
-          }
-          &__date {
-            color: #999999;
-            font-size: 12px;
-            margin-left: 10px;
-          }
-        }
-
-        &__text {
-          color: #434a54;
-          font-size: 14px;
-          margin-bottom: 10px;
-        }
-      }
-    }
-
-    .form {
-      height: 90px;
-      padding: 20px 40px;
-      background-color: #ddd;
-
-      form {
-        display: flex;
-        
-        .input-box {
-          position: relative;
-          width: 100%;
-
-          input.input-box__text {
-            height: 50px;
-            width: 100%;
-            padding: 0 40px 0 10px;
-            color: #434a54;
-            border-style: none;
-          }
-
-          label.input-box__image {
-            font-size: 1.3rem;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-
-            i.fa.fa-image {
-              display: inline-block;
-              font: normal normal normal 14px/1 FontAwesome;
-              font-size: inherit;
-              text-rendering: auto;
-              -webkit-font-smoothing: antialiased;
-
-            input.input-box__image__file{
-              display: none;
-            }
-            }
-          }
-        }
-
-        input.submit-btn{
-          width: 100px;
-          height: 50px;
-          padding: 0 30px;
-          margin-left: 15px;
-          background-color: #38aef0;
-          color: white;
-          cursor: pointer;
-        }
-      }
+      font-size: 12px;
+      color: #999999;
     }
   }
+  &__edit-btn {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    margin-top: 30px;
+    border: solid 1px #38aef0;
+    color: #38aef0;
+    position: absolute;
+    right: 40px;
+  }
+}
+
+.messages {
+  height: calc(100vh - 190px);
+  padding: 46px 40px;
+  background-color: #fafafa;
+  overflow: scroll;
+}
+
+.message {
+  padding-bottom: 40px;
+  &__upper-info {
+    display: flex;
+    margin-bottom: 10px;
+    &__talker {
+      color: #434a54;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    &__date {
+      color: #999999;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+  }
+  &__text {
+    color: #434a54;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+.form {
+  height: 90px;
+  padding: 20px 40px;
+  background-color: #ddd;
+}
+
+.new-message {
+  display: flex;
+}
+        
+.input-box {
+  position: relative;
+  width: 100%;
+  &__text {
+    height: 50px;
+    width: 100%;
+    padding: 0 40px 0 10px;
+    color: #434a54;
+    border-style: none;
+  }
+  &__image {
+    font-size: 1.3rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    &__file{
+      display: none;
+    }
+  }
+}
+
+
+.fa.fa-image {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.submit-btn{
+  width: 100px;
+  height: 50px;
+  padding: 0 30px;
+  margin-left: 15px;
+  background-color: #38aef0;
+  color: white;
+  cursor: pointer;
 }
