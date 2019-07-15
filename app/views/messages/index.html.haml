@@ -15,10 +15,9 @@
     .chat-main
       .main-header
         .main-header__left-box
-          %h2.main-header__left-box__current-group{"data-group_id" => "2228"} GROUP NAME
+          %h2.main-header__left-box__current-group GROUP NAME
           %ul.main-header__left-box__member-list
             %li.main-header__left-box__member-list__member MEMBER: MEMBER'S NAME
-        %a{:href => "/groups/2228/edit"}
           .main-header__edit-btn EDIT
       .messages
         .message
@@ -27,14 +26,11 @@
             %p.message__upper-info__date DATE
           %p.message__text TEXT
       .form
-        %form#new-message.new-message{:action => "/groups/2228/messages", :enctype => "multipart/form-data", "accept-charset" => "UTF-8", :method => "post"}
-          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-          %input{:name => "authenticity_token", :type => "hidden", :value => "yIXLGCWYPZbQ4bgHW8AL4SpnQ0ZEXLwhkAiSc2wiVWQLRH5zps8PEFV3TdIi9VuW4rGWvppMCmX6vvW80VXByw=="}/
-          .input-box
-            %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-            %label.input-box__image{:for => "message_image"}
-              %i.fa.fa-image
-                %input#message_image.input-box__image__file{:name => "message[image]", :type => "file"}/
-          %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
-
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = fa_icon 'picture-o', class: 'icon'
+              = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'form__submit'
 
