@@ -11,67 +11,21 @@
 %body
   .flash-box
   .wrapper
-    .chat-side
-      .side-header
-        .side-header__box
-          %p.side-header__box__user-name
-            = current_user.name
-          %ul.side-header__box__menu
-            %li.side-header__box__menu__new-group
-              %a{:href => "/groups/new"}
-                %i.fa.fa-edit
-            %li.side-header__box__menu__edit-user
-              = link_to edit_user_path(current_user) do
-                = fa_icon 'cog', class: 'icon'
-      .groups
-        %a:{:href => "/groups/2228/messages"}
-          .group
-            %p.group__group-name BALUS
-            %p.group__grouplatest-message ライブで世界を変えます。
+    = render 'shared/chat-side'
     .chat-main
       .main-header
         .main-header__left-box
-          %h2.main-header__left-box__current-group{"data-group_id" => "2228"} BALUS
+          %h2.main-header__left-box__current-group{"data-group_id" => "2228"} GROUP NAME
           %ul.main-header__left-box__member-list
-            %li.main-header__left-box__member-list__member MEMBER: アンジョー、コーサカ、銀河アリス、夜子ﾊﾞｰﾊﾞﾝｸ、風宮まつり
+            %li.main-header__left-box__member-list__member MEMBER: MEMBER'S NAME
         %a{:href => "/groups/2228/edit"}
           .main-header__edit-btn EDIT
       .messages
         .message
           .message__upper-info 
-            %p.message__upper-info__talker MZM
-            %p.message__upper-info__date 2019/07/12(Fri) 00:55:00
-          %p.message__text コーサカです。アンジョーです。二人合わせてMonsterZ MATEです。
-        .message
-          .message__upper-info 
-            %p.message__upper-info__talker 銀河アリス
-            %p.message__upper-info__date 2019/07/12(Fri) 00:56:00
-          %p.message__text ごきげんようです！銀河アリスでーす！
-        .message
-          .message__upper-info 
-            %p.message__upper-info__talker 夜子・バーバンク
-            %p.message__upper-info__date 2019/07/12(Fri) 00:57:00
-          %p.message__text 紳士淑女の皆々様、夜子・バーバンクです。
-        .message
-          .message__upper-info 
-            %p.message__upper-info__talker 風宮まつり
-            %p.message__upper-info__date 2019/07/12(Fri) 00:58:00
-          %p.message__text 風宮まつり〜ｶｯｶｯ!
-        .message
-          .message__upper-info 
-            %p.message__upper-info__talker BALUS
-            %p.message__upper-info__date 2019/07/12(Fri) 00:59:00
-          %p.message__text ライブで世界を変えます。１
-        .message
-          .message__upper-info 
-            %p.message__upper-info__talker BALUS
-            %p.message__upper-info__date 2019/07/12(Fri) 00:59:00
-          %p.message__text ライブで世界を変えます。２
-        .message
-          .message__upper-info 
-            %p.message__upper-info__talker BALUS
-            %p.message__upper-info__date 2019/07/12(Fri) 00:59:00
-          %p.message__text ライブで世界を変えます。３
+            %p.message__upper-info__talker USERNAME
+            %p.message__upper-info__date DATE
+          %p.message__text TEXT
       .form
         %form#new-message.new-message{:action => "/groups/2228/messages", :enctype => "multipart/form-data", "accept-charset" => "UTF-8", :method => "post"}
           %input{:name => "utf8", :type => "hidden", :value => "✓"}/
