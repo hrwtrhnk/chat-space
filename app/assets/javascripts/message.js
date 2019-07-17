@@ -37,7 +37,6 @@ $(function(){
     var html = buildMessage(message);
     $('.messages').append(html)
     $('.messages').animate({ scrollTop: $(".messages")[0].scrollHeight }, 500);
-    $('#message_content').val('')
     $('#new_message')[0].reset();
     $('.submit-btn').attr('disabled', false);
   })
