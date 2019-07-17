@@ -15,16 +15,18 @@
     .chat-main
       .main-header
         .main-header__left-box
-          %h2.main-header__left-box__current-group GROUP NAME
+          %h2.main-header__left-box__current-group #{@group.name}
           %ul.main-header__left-box__member-list
-            %li.main-header__left-box__member-list__member MEMBER: MEMBER'S NAME
-          .main-header__edit-btn EDIT
+            %li.main-header__left-box__member-list__member 
+            MEMBER: 
+            - @group.users.each do |group_member|
+              %div #{group_member.name}&nbsp;
+        .main-header__edit-btn 
+          = link_to edit_group_path(@group[:id]), class: ' main-header__editBtn ' do
+            EDIT
+         
       .messages
-        .message
-          .message__upper-info 
-            %p.message__upper-info__talker USERNAME
-            %p.message__upper-info__date DATE
-          %p.message__text TEXT
+        = render @messages
       .form
         = form_for [@group, @message] do |f|
           = f.text_field :content, class: 'form__message', placeholder: 'type a message'
@@ -33,4 +35,3 @@
               = fa_icon 'picture-o', class: 'icon'
               = f.file_field :image, class: 'hidden'
           = f.submit 'Send', class: 'form__submit'
-
