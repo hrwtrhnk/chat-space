@@ -17,4 +17,5 @@
           .group__name
             = group.name
           .group__latest-message
-            = group.show_latest_message
+            = group.messages.last.nil? ? "メッセージはありません" : group.messages.last.content
+

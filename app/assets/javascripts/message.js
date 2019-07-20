@@ -1,8 +1,8 @@
-$(function(){
+$(document).on('turbolinks:load', function() {
 
   function buildMessage(message){
     var insertImage = message.image == undefined ? "" : `<img src="${message.image}" class="message__lower-info__image">`
-    var html = `<div class="message">
+    var html = `<div class="message" data-id="${message.id}">
                   <div class="message__upper-info">
                     <p class="message__upper-info__talker">
                     ${message.user_name}
@@ -38,13 +38,39 @@ $(function(){
     $('.messages').append(html)
     $('.messages').animate({ scrollTop: $(".messages")[0].scrollHeight }, 500);
     $('#new_message')[0].reset();
-    $('.submit-btn').attr('disabled', false);
+    $('.submit-btn').prop('disabled', false);
   })
   .fail(function(){
-    alert('ERROR!! メッセージを送信できませんでした。');
+    alert('メッセージを送信できませんでした。');
   })
   .always(function(message){
     $('.form__submit').prop('disabled', false);
   })
   })
-})
+
+  var reloadMessages = function() {
+    if (location.href.match(/\/groups\/\d+\/messages/)){
+      var latest_message_id = $('.message').last().data('id');
+      $.ajax({
+        url: 'api/messages',
+        type: 'get',
+        dataType: 'json',
+        data: {id: latest_message_id}
+      })
+      .done(function(messages) {
+        var insertHTML = '';
+        messages.forEach(function(message){
+        insertHTML += buildMessage(message)
+        $('.messages').append(insertHTML)
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 500);
+        })
+      })
+      .fail(function() {
+        alert('自動更新に失敗しました');
+      });
+    } else {
+      clearInterval(reloadMessages);
+    }
+  };
+  setInterval(reloadMessages, 5000);
+});
